@@ -12,8 +12,8 @@ public_users.post("/register", (req,res) => {
 
   // Check if both username and password are provided
   if (username && password) {
-      // Check if the user does not already exist
-      if (!doesExist(username)) {
+      // Check if the username is valid (not existing yet)
+      if (isValid(username)) {
           // Add the new user to the users array
           users.push({"username": username, "password": password});
           return res.status(200).json({message: "User successfully registered. Now you can login"});
